@@ -12,6 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed = 90;
     public float force = 700f;
 
+    // EDIT: reference Sonic
+    public GameObject character;
+
+    // EDIT: for multiple animations
+    private Animation anim;
+
     public GameObject cannon;
     public GameObject bullet;
 
@@ -23,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         t = GetComponent<Transform>();
+        
+        // EDIT: get the animation
+        anim = character.GetComponent<Animation>();
+
+        // EDIT: at the start, make sure animation doesnt play
+        character.GetComponent<Animator>().enabled = false;
     }
 
     // Update is called once per frame
@@ -32,6 +44,15 @@ public class PlayerMovement : MonoBehaviour
         //the multiplication below ensures that GameObject moves constant speed every frame
         if (Input.GetKey(KeyCode.W))
             rb.velocity += this.transform.forward * speed * Time.deltaTime;
+            
+            // EDIT: make sure jump animation stops playing
+            if (!character.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("sn_ball_loop"))
+            {
+                // EDIT: enable animator and play the running animation
+                character.GetComponent<Animator>().enabled = true;
+                anim.Play("sn_run_loop");
+            }
+
         else if (Input.GetKey(KeyCode.S))
             rb.velocity -= this.transform.forward * speed * Time.deltaTime;
 
@@ -43,7 +64,13 @@ public class PlayerMovement : MonoBehaviour
 
         // EDIT: force is now 300f
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             rb.AddForce(t.up * (force - 400f));
+
+            // EDIT: if jumping, turn on animation
+            character.GetComponent<Animator>().enabled = true;
+            anim.Play("sn_ball_loop");
+        }
 
         // https://docs.unity3d.com/ScriptReference/Input.html
         if (Input.GetButtonDown("Fire1"))
@@ -53,5 +80,15 @@ public class PlayerMovement : MonoBehaviour
             newBullet.GetComponent<Rigidbody>().AddForce(newBullet.transform.forward * 1500);
         }
 
+    }
+
+    // EDIT: if character lands, stop spinning animation
+    private void OnCollisionEnter(Collision collision)
+    {
+        // EDIT: if animation already playing, then stop it
+        if (character.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("sn_ball_loop"))
+        {
+            character.GetComponent<Animator>().enabled = false;
+        }
     }
 }
