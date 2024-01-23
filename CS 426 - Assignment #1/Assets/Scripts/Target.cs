@@ -15,6 +15,11 @@ public class Target : MonoBehaviour
 
         // printing if collision is detected on the console
         Debug.Log("Collision Detected");
+
+        // EDIT: make chao sound
+        //chaoSound = GetComponent<AudioSource>();
+        //chaoSound.Play();
+
         //after collision is detected destroy the gameobject
         Destroy(gameObject);
     }
