@@ -8,7 +8,7 @@ using UnityEngine;
 // MonoBehavior is the base class from which every Unity Script Derives
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 25.0f;
+    public float speed = 10.0f;
     public float rotationSpeed = 90;
     public float force = 700f;
 
