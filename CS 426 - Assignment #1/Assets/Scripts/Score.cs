@@ -16,6 +16,7 @@ public class Score : MonoBehaviour
     void Start()
     {
         score = 0;
+        // EDIT: the score text now refers to the objective
         scoreText.text = "Chao Fed: " + score + "/5";
     }
 
@@ -26,6 +27,7 @@ public class Score : MonoBehaviour
         score++;
 
         if (score != maxScore)
+            // EDIT: the score updates based on completing the objective
             scoreText.text = "Chao Fed: " + score + "/5";
         else
             scoreText.text = "You won!";

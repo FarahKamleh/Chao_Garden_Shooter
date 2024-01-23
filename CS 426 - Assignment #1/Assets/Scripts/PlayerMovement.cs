@@ -41,8 +41,9 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey(KeyCode.A))
             t.rotation *= Quaternion.Euler(0, -rotationSpeed * Time.deltaTime, 0);
 
+        // EDIT: force is now 300f
         if (Input.GetKeyDown(KeyCode.Space))
-            rb.AddForce(t.up * force);
+            rb.AddForce(t.up * (force - 400f));
 
         // https://docs.unity3d.com/ScriptReference/Input.html
         if (Input.GetButtonDown("Fire1"))
