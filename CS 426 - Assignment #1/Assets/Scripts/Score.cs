@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
     void Start()
     {
         score = 0;
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Chao Fed: " + score + "/5";
     }
 
     //we will call this method from our target script
@@ -26,7 +26,7 @@ public class Score : MonoBehaviour
         score++;
 
         if (score != maxScore)
-            scoreText.text = "Score: " + score;
+            scoreText.text = "Chao Fed: " + score + "/5";
         else
             scoreText.text = "You won!";
     }
