@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     // EDIT: for multiple animations
     private Animation anim;
 
+    // EDIT: for jump sound
+    public AudioSource audioSource;
+
     public GameObject cannon;
     public GameObject bullet;
 
@@ -66,6 +69,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(t.up * (force - 400f));
+
+            // EDIT: make jump sound
+            audioSource.Play();
 
             // EDIT: if jumping, turn on animation
             character.GetComponent<Animator>().enabled = true;
