@@ -6,6 +6,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public Score scoreManager;
+    public AudioSource audioSource;
 
     //this method is called whenever a collision is detected
     private void OnCollisionEnter(Collision collision)
@@ -17,8 +18,7 @@ public class Target : MonoBehaviour
         Debug.Log("Collision Detected");
 
         // EDIT: make chao sound
-        //chaoSound = GetComponent<AudioSource>();
-        //chaoSound.Play();
+        audioSource.Play();
 
         //after collision is detected destroy the gameobject
         Destroy(gameObject);
