@@ -17,3 +17,7 @@ Sounds
 Chao Sound - https://www.101soundboards.com/boards/10529-chao-sounds-sonic-adventure-2#goog_rewarded
 Chao Garden Music - https://www.youtube.com/watch?v=pvv0PTeEzHI
 Sonic Jump - https://www.myinstants.com/en/instant/sonic-modern-jump-2-36897/
+
+Animations
+
+Running Backwards and Idle Animations attained using Mixamo.
