@@ -8,9 +8,12 @@ using UnityEngine;
 // MonoBehavior is the base class from which every Unity Script Derives
 public class PlayerMovement : MonoBehaviour
 {
+    // EDIT: speed changed to 10f
     public float speed = 10.0f;
     public float rotationSpeed = 90;
-    public float force = 700f;
+
+    // EDIT: force changed to 300f
+    public float force = 300f;
 
     // EDIT: reference animator
     Animator animator;
@@ -77,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         // EDIT: force is now 300f
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(t.up * (force - 400f));
+            rb.AddForce(t.up * (300f));
 
             // EDIT: make jump sound
             audioSource.Play();

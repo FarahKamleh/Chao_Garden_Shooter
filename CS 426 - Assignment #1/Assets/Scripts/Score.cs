@@ -12,6 +12,9 @@ public class Score : MonoBehaviour
 
     int score;
 
+    // EDIT: Sonic audio clip
+    public AudioSource feelingGood;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,11 @@ public class Score : MonoBehaviour
             // EDIT: the score updates based on completing the objective
             scoreText.text = "Chao Fed: " + score + "/5";
         else
+        {
             scoreText.text = "You won!";
+
+            // EDIT: have Sonic speak
+            feelingGood.Play();
+        }
     }
 }
